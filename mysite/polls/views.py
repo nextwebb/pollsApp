@@ -12,9 +12,11 @@ def index(request):
     return render(request, 'polls/index.html', context)
 
 def detail(request, question_id):
-     print(request)
-     return HttpResponse(f"This is the detail view  of the question: {question_id}")
-
+    #  print(request)
+    #  return HttpResponse(f"This is the detail view  of the question: {question_id}")
+    question = Question.objects.get(pk = question_id)
+    return render(request, "polls/detail.html", {'question': question})
+    
 def results(request, question_id):
     return HttpResponse(f"These  are the results of the question: {question_id}")
 
